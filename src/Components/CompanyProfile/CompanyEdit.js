@@ -77,7 +77,7 @@ const CompanyEdit = () => {
     formData.append("company_logo", e.target.files[0]);
     console.log(formData);
     axios
-      .put(`hri_company/company/update/${id}`, formData, {
+      .put(`hri_company/company/company-update/${id}`, formData, {
         headers: {
           Authorization: "Token " + cookies.get("token"),
         },

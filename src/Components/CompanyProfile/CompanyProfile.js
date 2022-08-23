@@ -45,7 +45,7 @@ const CompanyProfile = () => {
 
   async function getData() {
     await axios
-      .get("hri_company/company", {
+      .get("hri_company/company/company-detail", {
         headers: {
           Authorization: "Token " + cookies.get("token"),
         },

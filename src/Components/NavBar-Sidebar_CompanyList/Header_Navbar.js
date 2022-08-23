@@ -203,23 +203,24 @@ const Header_Navbar = () => {
           </div>
           </NavLink>
        </div>
-<div className="flex items-end">
-<div className="grid ">
+<div className="flex items-end ">
+  
+
           <NavLink to="/" style={({ isActive }) =>
               isActive ? activeStyle : undefined
             }>
             <div
-               className="single_option_div p-3 text-gray-600 cursor-pointer  font-semibold flex space-x-2 hover:bg-slate-100 hover:rounded hover:text-sky-700"
+               className="single_option_div   w-[220px] p-3 text-gray-600 cursor-pointer font-semibold flex space-x-2 hover:bg-slate-100 hover:rounded hover:text-red-400"
             >
               <BiLogOut className="text-xl option_icon" />
               <div className="option_title">
-                <div className="single_option_anchor ">
+                <div className="single_option_anchor hover:text-red-400 ">
                   Logout
                 </div>
               </div>
             </div>
           </NavLink>
-          </div>
+     
 </div>   
         </div>
       </nav>

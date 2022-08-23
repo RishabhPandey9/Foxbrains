@@ -38,7 +38,7 @@ const CompanyDetails = () => {
             console.log("Company Redirect: ", res.data);
             setData(res.data)
             console.log('res.data[1].login_details.redirect_url', res.data[1].login_details.user.token)
-            cookies.set('coverToken', res.data[1].login_details.user.token)
+            
             // myFunction(res.data[1].redirect_url)
             
     
@@ -97,7 +97,7 @@ const CompanyDetails = () => {
                      
                       <Button
                       size="large"
-                        onClick={() => {  openInNewTab(data[1].redirect_url) }}
+                        onClick={() => {  openInNewTab(`${data[1].redirect_url}?token=${data[1].login_details.user.token}`) }}
                         type="primary"
                         style={{borderRadius: "5px"}}
                         // className="bg-blue-500 px-6 py-2 font-semibold text-white rounded-md  "

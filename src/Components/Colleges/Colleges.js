@@ -37,7 +37,23 @@ const Colleges = () => {
       })
       .then((res) => {
         console.log("Company List: ", res.data);
-        setData(res.data)
+        if(input === ''){
+          setOutput2(res.data)
+        }
+        else{
+          setOutput2(
+            res.data.filter((item) => {
+            
+                return (
+                  item.business_name?.toLowerCase().includes(input?.toLowerCase())
+  
+              );
+              
+                
+            })
+        );
+        }
+      
         
       })
 
@@ -45,20 +61,13 @@ const Colleges = () => {
         console.log("error: ", err);
       });
   };
- 
-  useEffect(() =>{
-    getComapanyList()
-  },[])
+ useEffect(() => {
+  getComapanyList()
+ },[])
   useEffect(() => {
-    setOutput2(
-        data.filter((item) => {
-            return (
-                item.business_name?.toLowerCase().includes(input?.toLowerCase())
-
-            );
-        })
-    );
-}, [input, data]);
+    getComapanyList()
+    
+}, [input]);
   return (
     <>
       <Header_Navbar />
@@ -83,10 +92,13 @@ const Colleges = () => {
             
             </div>
             <div className="px-4"> 
-            <div className=" overflow-auto px-10  bg-white rounded-md mt-4 h-16">
-              {output2.map((item) =>{
+           
+              {
+        
+              output2.map((item) =>{
                 return(
-                  <div key={item.id} className="flex w-full  justify-between gap-x-4  md:gap-x-10 bg-white ">
+                  <div key={item.id} className=" overflow-auto px-10  bg-white rounded-md mt-4 h-16">
+                  <div  className="flex w-full  justify-between gap-x-4  md:gap-x-10  ">
                   <div className="flex justify-center items-center h-16">
                     <div className="">
                       <img
@@ -102,9 +114,7 @@ const Colleges = () => {
                         <span className="font-semibold text-[17px] ">
                           {item.business_name}
                         </span>{" "}
-                        <span className="text-[14px] text-gray-500 font-semibold">
-                          ({item.id})
-                        </span>{" "}
+                      
                       </div>{" "}
                       <div className="truncate flex">
                         <span>
@@ -135,10 +145,11 @@ const Colleges = () => {
                     asd
                   </div>
                 </div>
+                </div>
                 )
               })}
            
-            </div>
+        
             </div>
         
           </div>
