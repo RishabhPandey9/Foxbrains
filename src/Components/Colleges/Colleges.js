@@ -24,50 +24,28 @@ const Colleges = () => {
   const [input, setInput] = useState("");
   const [output2, setOutput2] = useState([]);
   const [id,setId] = useState()
-  function myFunction(value) {
-    location.replace("http://localhost:3000/Jobs")
-  }
- 
-  const getComapanyList = () => {
-    axios
-      .get(`company/client-list`, {
-        headers: {
-          Authorization: "Token " + cookies.get("token"),
-        },
-      })
-      .then((res) => {
-        console.log("Company List: ", res.data);
-        if(input === ''){
-          setOutput2(res.data)
-        }
-        else{
-          setOutput2(
-            res.data.filter((item) => {
-            
-                return (
-                  item.business_name?.toLowerCase().includes(input?.toLowerCase())
-  
-              );
-              
-                
-            })
-        );
-        }
-      
-        
-      })
 
-      .catch((err) => {
-        console.log("error: ", err);
-      });
-  };
- useEffect(() => {
-  getComapanyList()
- },[])
-  useEffect(() => {
-    getComapanyList()
-    
-}, [input]);
+ 
+  
+  async function getData() {
+    await axios
+        .get('company/client-list', {
+            headers: {
+                Authorization: "Token " + cookies.get("token"),
+            },
+        })
+        .then((resp) => {
+            setData(resp.data);
+
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+}
+useEffect(() => {
+getData()
+},[,input])
+
   return (
     <>
       <Header_Navbar />
@@ -95,58 +73,63 @@ const Colleges = () => {
            
               {
         
-              output2.map((item) =>{
+              data.map((item) =>{
                 return(
-                  <div key={item.id} className=" overflow-auto px-10  bg-white rounded-md mt-4 h-16">
-                  <div  className="flex w-full  justify-between gap-x-4  md:gap-x-10  ">
-                  <div className="flex justify-center items-center h-16">
-                    <div className="">
-                      <img
-                        src={item.logo}
-                        className="w-10 h-10 rounded-full"
-                        title="image_"
-                      />
-                    </div>
-                  </div>
-                  <div className="flex  items-center h-16 ">
-                    <div>
-                      <div>
-                        <span className="font-semibold text-[17px] ">
-                          {item.business_name}
-                        </span>{" "}
-                      
-                      </div>{" "}
-                      <div className="truncate flex">
-                        <span>
-                          <TiLocationOutline className="mt-1 mr-1" />{" "}
-                        </span>{" "}
-                        <span className="w-60 truncate">
-                          asd asd sdasda asdasd asdasd asdasd asdasd
-                        </span>
+                  item?.business_name?.toLowerCase().includes(input?.toLowerCase()) &&(
+                    <div key={item.id} className=" overflow-auto px-10  bg-white rounded-md mt-4 h-16">
+                    <div  className="flex w-full  justify-between gap-x-4  md:gap-x-10  ">
+                    <div className="flex justify-center items-center h-16">
+                      <div className="">
+                        <img
+                          src={item.logo}
+                          className="w-10 h-10 rounded-full"
+                          title="image_"
+                        />
                       </div>
                     </div>
-                  </div>
-                  <div className="flex justify-center items-center h-16">
-                    <div>
-                      <Button
-                        onClick={() => { cookies.set('compnyId',item.id); navigate("/CompanyDetails") }}
-                        type="primary"
-                        style={{borderRadius: "5px"}}
-                        // className="bg-blue-500 px-6 py-2 font-semibold text-white rounded-md  "
-                      >
-                        Details
-                      </Button>
+                    <div className="flex  items-center h-16 ">
+                      <div>
+                        <div>
+                          <span className="font-semibold text-[17px] ">
+                            {item.business_name}
+                          </span>{" "}
+                        
+                        </div>{" "}
+                        <div className="truncate flex">
+                          <span>
+                            <TiLocationOutline className="mt-1 mr-1" />{" "}
+                          </span>{" "}
+                          <span className="w-60 truncate">
+                            asd asd sdasda asdasd asdasd asdasd asdasd
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex justify-center items-center h-16">
+                      <div>
+                        <Button
+                          onClick={() => { cookies.set('compnyId',item.id); navigate("/CompanyDetails") }}
+                          type="primary"
+                          style={{borderRadius: "5px"}}
+                          // className="bg-blue-500 px-6 py-2 font-semibold text-white rounded-md  "
+                        >
+                          Details
+                        </Button>
+                      </div>
+                    </div>
+                    <div className="flex justify-center items-center h-16 font font-semibold text-[16px] ">
+                      asd
+                    </div>
+                    <div className="flex justify-center items-center h-16 font font-semibold text-[16px] ">
+                      asd
                     </div>
                   </div>
-                  <div className="flex justify-center items-center h-16 font font-semibold text-[16px] ">
-                    asd
                   </div>
-                  <div className="flex justify-center items-center h-16 font font-semibold text-[16px] ">
-                    asd
-                  </div>
-                </div>
-                </div>
-                )
+                  )
+                   
+                  )
+                
+                
               })}
            
         
