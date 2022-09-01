@@ -41,7 +41,7 @@ const Login = () => {
       .then((resp) => {
         console.log(resp);
 
-        navigate("/Colleges");
+        navigate(`/Colleges?token=${resp.data.user.token}`);
         toast.success("Login successfully!", {
           position: "top-right",
           autoClose: 5000,
@@ -52,6 +52,9 @@ const Login = () => {
           progress: undefined,
           });
         cookies.set("token", resp.data.user.token);
+        // localStorage.set("token1", resp.data.user.token);
+        console.log('first', cookies.get('token'))
+
         cookies.set("id", resp.data.user.id);
         cookies.set("email", resp.data.user.email);
       }).catch(function (error) {

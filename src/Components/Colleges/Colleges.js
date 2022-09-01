@@ -14,6 +14,7 @@ import Header_Navbar from "../NavBar-Sidebar_CompanyList/Header_Navbar";
 import { Button, Input } from "antd";
 import { BsSearch } from "react-icons/bs";
 import { TiLocationOutline } from "react-icons/ti";
+import { useSearchParams } from 'react-router-dom';
 
 const cookies = new Cookies();
 
@@ -25,13 +26,13 @@ const Colleges = () => {
   const [output2, setOutput2] = useState([]);
   const [id,setId] = useState()
 
- 
+  const [searchParams] = useSearchParams();
   
   async function getData() {
     await axios
         .get('company/client-list', {
             headers: {
-                Authorization: "Token " + cookies.get("token"),
+                Authorization: "Token " + searchParams.get('token'),
             },
         })
         .then((resp) => {
