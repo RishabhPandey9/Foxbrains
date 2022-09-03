@@ -32,7 +32,7 @@ const Colleges = () => {
     await axios
         .get('company/client-list', {
             headers: {
-                Authorization: "Token " + searchParams.get('token'),
+                Authorization: "Token " + cookies.get("cokieToken"),
             },
         })
         .then((resp) => {
@@ -46,7 +46,10 @@ const Colleges = () => {
 useEffect(() => {
 getData()
 },[,input])
-
+useEffect(() => {
+  cookies.set('token',searchParams.get('token') || cookies.get('token'))
+  getData()
+  },[])
   return (
     <>
       <Header_Navbar />

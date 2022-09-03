@@ -4,7 +4,7 @@ import { selectHeader } from "../features/HeaderSlice";
 import { useSelector } from "react-redux";
 
 import {RiBuildingFill} from "react-icons/ri"
-import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
 import { GoLocation } from "react-icons/go";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
@@ -15,11 +15,14 @@ import Cookies from "universal-cookie";
 import { BsFillDiamondFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import comp from "./CompPng.png";
-import {MdAddCircleOutline} from "react-icons/md"
+
 import Header_Navbar from "../NavBar-Sidebar_CompanyList/Header_Navbar";
+import { Button } from "antd";
+import { PlusCircleOutlined } from '@ant-design/icons';
 const cookies = new Cookies();
 
 const CompanyProfile = () => {
+  const navigate = useNavigate();
   const [complogo,setCompLogo] = useState("")
   const [data,setData] = useState([])
   const [name,setName] = useState("")
@@ -47,7 +50,7 @@ const CompanyProfile = () => {
     await axios
       .get("hri_company/company/company-detail", {
         headers: {
-          Authorization: "Token " + cookies.get("token"),
+          Authorization: "Token " + cookies.get("cokieToken"),
         },
       })
       .then((resp) => {
@@ -101,15 +104,17 @@ const CompanyProfile = () => {
                  : " ease-in  duration-300  ml-0 "
              }
            >
-             <div className="bg-white  px-8 md:px-12 pb-20 pt-8 w-full rounded-lg h-[500px]">
-             <div className="flex justify-center"><RiBuildingFill className="text-8xl mt-20 text-blue-400"/></div>
-             <div className="mx-56 mt-7"> 
-             <Link to="/CreateCompanyProfile" >
-             <Button  className="w-full h-10" variant="contained">
-                 Add Company Profile <MdAddCircleOutline className="text-xl ml-4 text-white"/>
-               </Button>
-               </Link>
-               </div>
+             <div className="bg-white flex justify-center px-8 md:px-12 pb-20 pt-8 w-full rounded-lg h-[500px]">
+          <div>
+          <RiBuildingFill className="text-8xl text-center  w-full mt-20 text-blue-400"/>
+         
+           
+         <Button onClick={() => navigate("/CreateCompanyProfile")} icon={<PlusCircleOutlined />}  type="primary">
+             Add Company Profile
+           </Button>
+          </div>
+          
+            
              </div>
               
            </div>

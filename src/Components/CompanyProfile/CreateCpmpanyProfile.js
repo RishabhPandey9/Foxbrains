@@ -47,7 +47,7 @@ const CreateCompanyProfile = () => {
     axios
       .put(`hri_company/company/add`, formData, {
         headers: {
-          Authorization: "Token " + cookies.get("token"),
+          Authorization: "Token " + cookies.get("cokieToken"),
         },
       })
       .then((res) => {
@@ -89,7 +89,7 @@ const CreateCompanyProfile = () => {
         },
         {
           headers: {
-            Authorization: "Token " + cookies.get("token"),
+            Authorization: "Token " + cookies.get("cokieToken"),
           },
         }
       )

@@ -55,7 +55,7 @@ const Header_Navbar = () => {
     await axios
       .get("hri_company/broadcast-list", {
         headers: {
-          Authorization: "Token " + cookies.get("token"),
+          Authorization: "Token " + cookies.get("cokieToken"),
         },
       })
       .then((resp) => {
@@ -171,37 +171,31 @@ const Header_Navbar = () => {
         }
       >
         <div className="flex  flex-col h-[85vh] justify-between sidebar_options_div hover:rounded text-sm text-gray-600 space-y-1 mx-3 ">
+       <div className="space-y-2">
        <div>
-       <div>
           </div>
-          <NavLink to="/CompanyProfile" style={({ isActive }) =>
-              isActive ? activeStyle : undefined
-            }>
+        
           <div
-             className="single_option_div p-3 text-gray-600 cursor-pointer font-semibold flex space-x-2 hover:bg-slate-100 hover:rounded hover:text-sky-700"
-          >
-            <RiProfileFill className=" text-xl option_icon" />
-            <div className="option_title ">
-              <div className="single_option_anchor hover:text-sky-700">
-                Company Profile
-              </div>
-            </div>
-          </div>
-          </NavLink>
-          <NavLink to="/Colleges" style={({ isActive }) =>
-              isActive ? activeStyle : undefined
-            }>
-          <div
-             className="single_option_div p-3 text-gray-600 cursor-pointer font-semibold flex space-x-2 hover:bg-slate-100 hover:rounded hover:text-sky-700"
-          >
-            <FaGraduationCap className=" text-xl option_icon" />
-            <div className="option_title ">
-              <div className="single_option_anchor hover:text-sky-700">
-                Colleges
-              </div>
-            </div>
-          </div>
-          </NavLink>
+                        onClick={() => navigate("/CompanyProfile")}
+                        className={`hover:bg-neutral-100 rounded cursor-pointer flex text-gray-600 items-centercursor-pointer hover:text-sky-700 p-2 font-semibold 
+                            ${window.location.pathname === "/CompanyProfile" ? "bg-neutral-100 text-sky-700" : ""}`}
+                    >
+                        <p className="m-1 flex">
+                            <RiProfileFill className="mr-4 text-lg"/>
+                            Company Profile
+                        </p>
+                    </div>
+                    <div
+                        onClick={() => navigate("/Colleges")}
+                        className={`hover:bg-neutral-100 rounded flex cursor-pointer text-gray-600 items-centercursor-pointer hover:text-sky-700 p-2 font-semibold 
+                            ${window.location.pathname === "/Colleges" ? "bg-neutral-100 text-sky-700" : ""}`}
+                    >
+                        <p className="m-1 flex">
+                            <FaGraduationCap className="mr-4 text-lg"/>
+                            Colleges
+                        </p>
+                    </div>
+          
        </div>
 <div className="flex items-end ">
   

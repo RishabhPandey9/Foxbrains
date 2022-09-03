@@ -51,7 +51,7 @@ const Login = () => {
           draggable: true,
           progress: undefined,
           });
-        cookies.set("token", resp.data.user.token);
+        cookies.set("cokieToken", resp.data.user.token);
         // localStorage.set("token1", resp.data.user.token);
         console.log('first', cookies.get('token'))
 
@@ -59,10 +59,8 @@ const Login = () => {
         cookies.set("email", resp.data.user.email);
       }).catch(function (error) {
        
-        console.log(error.response,"asdadsads")
+        // console.log(error.response,"asdadsads")
         
-        
-      
            
           toast.error(error.response.data.user.message, {
             position: "top-right",

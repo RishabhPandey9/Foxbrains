@@ -34,7 +34,7 @@ const Signup = () => {
         .then((resp) => {
           console.log(resp);
           navigate("/VerifySignup");
-          cookies.set("token", resp.data.token);
+          cookies.set("cokieToken", resp.data.token);
         })
         .catch((err) => {
           console.log(err);

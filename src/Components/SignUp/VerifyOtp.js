@@ -27,7 +27,7 @@ const VerifyOtp = () => {
      axios
        .post("auth/user/email/verification", data, {
          headers: {
-             Authorization: "Token " + cookies.get("token")
+             Authorization: "Token " + cookies.get("cokieToken")
          },
      },)
        .then((res) => {

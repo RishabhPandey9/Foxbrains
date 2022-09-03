@@ -42,7 +42,7 @@ const CompanyEdit = () => {
     await axios
       .get("hri_company/company", {
         headers: {
-          Authorization: "Token " + cookies.get("token"),
+          Authorization: "Token " + cookies.get("cokieToken"),
         },
       })
       .then((resp) => {
@@ -79,7 +79,7 @@ const CompanyEdit = () => {
     axios
       .put(`hri_company/company/company-update/${id}`, formData, {
         headers: {
-          Authorization: "Token " + cookies.get("token"),
+          Authorization: "Token " + cookies.get("cokieToken"),
         },
       })
       .then((res) => {
@@ -120,7 +120,7 @@ const CompanyEdit = () => {
         },
         {
           headers: {
-            Authorization: "Token " + cookies.get("token"),
+            Authorization: "Token " + cookies.get("cokieToken"),
           },
         }
       )

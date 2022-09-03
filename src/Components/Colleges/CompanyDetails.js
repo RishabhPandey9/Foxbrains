@@ -20,6 +20,7 @@ import Header_Navbar from "../NavBar-Sidebar_CompanyList/Header_Navbar";
 import {BsYoutube} from 'react-icons/bs'
 import {AiFillInstagram} from 'react-icons/ai'
 import {Button} from "antd";
+import Spinner from "../Spinner/Spinner";
 // import facebook from "../174848.png"
 // import linkedin from "../174857.png"
 // import insta from "../2111463.png"
@@ -38,7 +39,7 @@ const CompanyDetails = () => {
         axios
             .get(`company/client-detail/${cookies.get('compnyId')}`, {
                 headers: {
-                    Authorization: "Token " + cookies.get("token"),
+                    Authorization: "Token " + cookies.get("cokieToken"),
                 },
             })
             .then((res) => {
@@ -73,7 +74,7 @@ const CompanyDetails = () => {
                 `company/client-status-change/${cookies.get('compnyId')}`,
                 {
                     headers: {
-                        Authorization: "Token " + cookies.get("token"),
+                        Authorization: "Token " + cookies.get("cokieToken"),
                     },
                 })
             .then((res) => {
@@ -112,7 +113,7 @@ const CompanyDetails = () => {
                             : " ease-in  duration-300  ml-0 "
                     }
                 >
-
+                    {data.length ? 
                     <div className="bg-white px-8 md:px-12 pb-20 pt-8 w-full rounded-lg h-auto">
                         <div className="md:flex  justify-between">
                             <div className=" md:flex justify-center">
@@ -245,7 +246,7 @@ const CompanyDetails = () => {
                         </div> */}
 
                     </div>
-
+                    : <Spinner /> }
 
                 </div>
 

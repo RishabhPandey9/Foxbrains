@@ -20,7 +20,7 @@ const ChangePass = () => {
     const navigate = useNavigate();
   
     const headers = {
-      Authorization: "Token " + cookies.get("token"),
+      Authorization: "Token " + cookies.get("cokieToken"),
     };
   
     async function done(e) {

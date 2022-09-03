@@ -25,7 +25,7 @@ const EnterOtp = () => {
     }, []);
   
     const headers = {
-      Authorization: "Token " + cookies.get("token"),
+      Authorization: "Token " + cookies.get("cokieToken"),
     };
 
     async function enterOtp(e) {
