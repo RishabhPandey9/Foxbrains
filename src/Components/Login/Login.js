@@ -53,7 +53,7 @@ const Login = () => {
           });
         cookies.set("cokieToken", resp.data.user.token);
         // localStorage.set("token1", resp.data.user.token);
-        console.log('first', cookies.get('token'))
+        console.log('first', cookies.get("cokieToken"))
 
         cookies.set("id", resp.data.user.id);
         cookies.set("email", resp.data.user.email);

@@ -9,7 +9,7 @@ import 'tw-elements';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import 'antd/dist/antd.min.css'
 
-axios.defaults.baseURL = 'http://stgcompany.hri.karmaalab.com/';
+axios.defaults.baseURL = 'https://stgcompany.hri.karmaalab.com/';
 
 ReactDOM.render(
   

@@ -47,7 +47,7 @@ useEffect(() => {
 getData()
 },[,input])
 useEffect(() => {
-  cookies.set('token',searchParams.get('token') || cookies.get('token'))
+  cookies.set("cokieToken",searchParams.get("token") || cookies.get("cokieToken"))
   getData()
   },[])
   return (
@@ -104,7 +104,7 @@ useEffect(() => {
                             <TiLocationOutline className="mt-1 mr-1" />{" "}
                           </span>{" "}
                           <span className="w-60 truncate">
-                            asd asd sdasda asdasd asdasd asdasd asdasd
+                           {item.ofc_address}
                           </span>
                         </div>
                       </div>
@@ -121,12 +121,7 @@ useEffect(() => {
                         </Button>
                       </div>
                     </div>
-                    <div className="flex justify-center items-center h-16 font font-semibold text-[16px] ">
-                      asd
-                    </div>
-                    <div className="flex justify-center items-center h-16 font font-semibold text-[16px] ">
-                      asd
-                    </div>
+                    
                   </div>
                   </div>
                   )
