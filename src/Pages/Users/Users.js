@@ -99,7 +99,7 @@ getData()
                   </td>
                   <td className="p-3   text-base text-gray-700 whitespace-nowrap">
                   <div  
-                 className='bg-slate-100  py-2 rounded-lg text-blue-600 hover:bg-slate-300 hover:text-blue-700 '> View Message </div>
+                 className='bg-slate-100  py-2 rounded-lg text-blue-600 hover:bg-slate-300 hover:text-blue-700 '> View Details </div>
                   
                   </td>
                 </tr>
