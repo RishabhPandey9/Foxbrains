@@ -74,7 +74,7 @@ const Signup = () => {
       });
     }
   }
-
+  toast.configure();
   const [values, setValues] = useState({
     amount: "",
     password: "",

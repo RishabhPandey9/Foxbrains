@@ -3,7 +3,8 @@ import React, {useEffect, useState} from "react";
 
 import axios from "axios";
 
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {Link, useNavigate, useParams} from "react-router-dom";
 
 
@@ -37,9 +38,10 @@ const UserDetails = () => {
         getData()
     
     },[])
-
+    toast.configure();
     return (
         <>
+              <ToastContainer/>
             <Header_Navbar/>
             <div
 

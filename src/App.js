@@ -1,10 +1,11 @@
 
 import Login from "./Pages/Login/Login";
-import Signup from "./Components/SignUp/Signup";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PageNotFound from "./Pages/PageNotFound/PageNotFound";
 import Users from "./Pages/Users/Users";
 import UserDetails from "./Pages/Users/UserDetails";
+import Signup from "./Pages/SignUp/Signup";
 
 
 

@@ -85,6 +85,7 @@ const Login = () => {
   return (
     <>
       <div className="">
+        <ToastContainer/>
         <div className="mx-8 h-auto  md:mx-20 mt-10 md:mt-12 lg:mt-16 ">
           <div className=" md:flex">
             <div className="hidden md:flex md:flex-col  w-1/2">
